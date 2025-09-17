@@ -15,3 +15,15 @@ def mask_account_card(props: str) -> str:
         return f"{card_name} {number_count_mask} "
     else:
         return "Неверные данные"
+
+
+def get_date(str_date: str) -> str:
+    """Принимает строку с датой в формате '2024-03-11T02:26:18.671407'
+    Возвращает строку с датой в формате 'ДД.ММ.ГГГГ'
+    """
+    return f"{str_date[8:10]}.{str_date[5:7]}.{str_date[0:4]}"
+
+
+print(get_date("2024-03-11T02:26:18.671407"))
+print(mask_account_card("Visa Platinum 7000792289606361"))
+print(mask_account_card("Счет 73654108430135874305"))
