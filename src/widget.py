@@ -1,0 +1,17 @@
+from src.masks import get_mask_account, get_mask_card_number
+
+
+def mask_account_card(props: str) -> str:
+    """Обрабатывает информацию о карте и счете
+    Возвращает строку с именем и максированным номером"""
+    list_props = props.rsplit(maxsplit=1)
+    card_name = list_props[0]  # название реквизитов
+    number_props = list_props[1]  # цифры реквизитов
+    if len(number_props) == 16:
+        number_card_mask = get_mask_card_number(int(number_props))  # маска номера карты
+        return f"{card_name} {number_card_mask}"
+    if len(number_props) == 20:
+        number_count_mask = get_mask_account(int(number_props))  # маска номера счета
+        return f"{card_name} {number_count_mask} "
+    else:
+        return "Неверные данные"
