@@ -30,3 +30,34 @@ pip list
 ```
 poetry add --group dev pytest
 ```
+
+## Функционал
+
+- `get_mask_card_number(card_number: int) -> str` — маскирует номер банковской карты (16 цифр).
+- `get_mask_account(account_number: int) -> str` — маскирует номер банковского счёта (20 цифр).
+- `mask_account_card(props: str) -> str` — определяет, карта или счёт, и маскирует номер.
+- `get_date(str_date: str) -> str` — преобразует дату в формат `ДД.ММ.ГГГГ`.
+- `filter_by_state(dictionaries, state="EXECUTED")` — фильтрует список операций по статусу.
+- `sort_by_date(dictionaries, reverse=True)` — сортирует список операций по дате.
+
+
+## Тесты
+
+- Тесты модуля `masks.py` пройдены на 100%
+- Тесты модуля `widget.py` пройдены на 100%
+- Тесты модуля `processing.py` пройдены на 100%
+
+Самостоятельная проверка тестов:
+
+1. Установите pytest: `poetry add --group dev pytest`
+2. `pytest/путь_к_файлу`- тест файла
+
+Чтобы запустить тесты с оценкой покрытия, можно воспользоваться следующими командами:
+1. `pytest --cov` - при активированном виртуальном окружении.
+2. `poetry run pytest --cov` - через poetry.
+3. `pytest --cov=src --cov-report=html` - чтобы сгенерировать отчет о покрытии в HTML-формате, где 
+src
+ — пакет c модулями, которые тестируем. Отчет будет сгенерирован в папке 
+htmlcov
+ и храниться в файле с названием 
+index.html.
