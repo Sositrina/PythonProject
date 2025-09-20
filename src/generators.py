@@ -29,8 +29,8 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict
     - transactions: список словарей с информацией о транзакциях
     - currency: валюта в виде строки
     Описание:
-    Перебирает список словарей
-    Возвращает по одному только те, у которых валюта 'USD'
+     - перебирает список словарей
+     - возвращает по одному только те, у которых валюта 'USD'
     """
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["name"] == currency:
@@ -40,3 +40,20 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict
 usd_transactions = filter_by_currency(transactions, "USD")
 for _ in range(2):
     print(next(usd_transactions))
+
+
+def transaction_descriptions(transactions: List[Dict]) -> Iterator[str]:
+    """
+    Принимает:
+    - список словарей
+    Описание:
+    - перебирает список словарей
+    - возвращает значение по ключу 'description'
+    """
+    for transaction in transactions:
+        yield transaction["description"]
+
+
+descriptions = transaction_descriptions(transactions)
+for _ in range(2):
+    print(next(descriptions))
