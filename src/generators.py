@@ -55,5 +55,29 @@ def transaction_descriptions(transactions: List[Dict]) -> Iterator[str]:
 
 
 descriptions = transaction_descriptions(transactions)
-for _ in range(2):
-    print(next(descriptions))
+for _ in range(5):
+    try:
+        print(next(descriptions))
+    except StopIteration:
+        break
+
+
+def card_number_generator(start: int, stop: int) -> Iterator[str]:
+    """
+    Принимает:
+    - start: целое число, начальное значение диапазона
+    - stop: целое число, конечное значение диапазона включительно
+    Описание:
+    - перебирает числа от start до stop включительно
+    - преобразует числа в строку длинной 16 с ведущими нулями
+    - преобразует строку в формат XXXX XXXX XXXX XXXX
+    - возвращает номера в карты по однйо строке
+    """
+    for number in range(start, stop + 1):
+        number_str = str(number).zfill(16)
+        correct_format = f"{number_str[0:4]} {number_str[4:8]} {number_str[8:12]} {number_str[12:]}"
+        yield correct_format
+
+
+for card_number in card_number_generator(1, 5):
+    print(card_number)
