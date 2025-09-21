@@ -33,13 +33,20 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict
      - возвращает по одному только те, у которых валюта 'USD'
     """
     for transaction in transactions:
-        if transaction["operationAmount"]["currency"]["name"] == currency:
+        currency_info = transaction.get("operationAmount", {}).get("currency", {})
+        if (
+                currency_info.get("name") == currency
+                and currency_info.get("code") == currency
+        ):
             yield transaction
 
 
 usd_transactions = filter_by_currency(transactions, "USD")
 for _ in range(2):
-    print(next(usd_transactions))
+    try:
+        print(next(usd_transactions))
+    except StopIteration:
+        break
 
 
 def transaction_descriptions(transactions: List[Dict]) -> Iterator[str]:
