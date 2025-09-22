@@ -32,12 +32,22 @@ poetry add --group dev pytest
 ```
 
 ## Функционал
-- `get_mask_card_number(card_number: int) -> str` — маскирует номер банковской карты (16 цифр).
-- `get_mask_account(account_number: int) -> str` — маскирует номер банковского счёта (20 цифр).
-- `mask_account_card(props: str) -> str` — определяет, карта или счёт, и маскирует номер.
-- `get_date(str_date: str) -> str` — преобразует дату в формат `ДД.ММ.ГГГГ`.
-- `filter_by_state(dictionaries, state="EXECUTED")` — фильтрует список операций по статусу.
-- `sort_by_date(dictionaries, reverse=True)` — сортирует список операций по дате.
+В модуле masks:
+- `get_mask_card_number` — маскирует номер банковской карты (16 цифр).
+- `get_mask_account` — маскирует номер банковского счёта (20 цифр).
+
+В модуле widget:
+- `mask_account_card` — определяет, карта или счёт, и маскирует номер.
+- `get_date` — преобразует дату в формат `ДД.ММ.ГГГГ`.
+
+В модуле processing:
+- `filter_by_state` — фильтрует список операций по статусу.
+- `sort_by_date` — сортирует список операций по дате.
+
+В модуле generators:
+- `filter_by_currency` — возвращает транзакции у которых валюта USD
+- `transaction_descriptions` — возвращает значение по ключу 'description'
+- `card_number_generator` — возвращает номера в карты формата XXXX XXXX XXXX XXXX
 
 
 ## Тесты
