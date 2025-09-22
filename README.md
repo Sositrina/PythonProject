@@ -61,6 +61,20 @@ for transaction in usd_transactions:
     print(transaction) 
 ```
 - `transaction_descriptions` — возвращает значение по ключу 'description'
+- Пример:
+```
+from module_name import transaction_descriptions
+
+transactions = [
+    {"description": "Перевод организации"},
+    {"description": "Перевод со счета на счет"},
+]
+
+descriptions = transaction_descriptions(transactions)
+
+print(next(descriptions))  # 👉 "Перевод организации"
+print(next(descriptions))
+```
 - `card_number_generator` — возвращает номера в карты формата XXXX XXXX XXXX XXXX
 
 
