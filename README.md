@@ -32,7 +32,6 @@ poetry add --group dev pytest
 ```
 
 ## Функционал
-
 - `get_mask_card_number(card_number: int) -> str` — маскирует номер банковской карты (16 цифр).
 - `get_mask_account(account_number: int) -> str` — маскирует номер банковского счёта (20 цифр).
 - `mask_account_card(props: str) -> str` — определяет, карта или счёт, и маскирует номер.
@@ -46,6 +45,7 @@ poetry add --group dev pytest
 - Тесты модуля `masks.py` пройдены на 100%
 - Тесты модуля `widget.py` пройдены на 100%
 - Тесты модуля `processing.py` пройдены на 100%
+- Тесты модуля `generators.py` пройдены
 
 Самостоятельная проверка тестов:
 
