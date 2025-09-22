@@ -46,6 +46,20 @@ poetry add --group dev pytest
 
 В модуле generators:
 - `filter_by_currency` — возвращает транзакции у которых валюта USD
+- Пример:
+```
+from generators import filter_by_currency
+
+transactions = [
+    {"operationAmount": {"amount": "100", "currency": {"name": "USD", "code": "USD"}}},
+    {"operationAmount": {"amount": "200", "currency": {"name": "EUR", "code": "EUR"}}},
+]
+
+usd_transactions = filter_by_currency(transactions, "USD")
+
+for transaction in usd_transactions:
+    print(transaction) 
+```
 - `transaction_descriptions` — возвращает значение по ключу 'description'
 - `card_number_generator` — возвращает номера в карты формата XXXX XXXX XXXX XXXX
 
