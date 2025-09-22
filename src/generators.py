@@ -78,7 +78,7 @@ def card_number_generator(start: int, stop: int) -> Iterator[str]:
     - перебирает числа от start до stop включительно
     - преобразует числа в строку длинной 16 с ведущими нулями
     - преобразует строку в формат XXXX XXXX XXXX XXXX
-    - возвращает номера в карты по однйо строке
+    - возвращает номера в карты по одной строке
     """
     for number in range(start, stop + 1):
         number_str = str(number).zfill(16)
