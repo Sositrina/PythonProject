@@ -76,6 +76,18 @@ print(next(descriptions))  # 👉 "Перевод организации"
 print(next(descriptions))
 ```
 - `card_number_generator` — возвращает номера в карты формата XXXX XXXX XXXX XXXX
+- Пример:
+```
+from src.generators import card_number_generator
+
+cards = card_number_generator(1, 5)
+
+print(next(cards))  
+print(next(cards))  
+print(next(cards))  
+print(next(cards))  
+print(next(cards))
+```
 
 
 ## Тесты
