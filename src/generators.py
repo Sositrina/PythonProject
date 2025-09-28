@@ -34,10 +34,7 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict
     """
     for transaction in transactions:
         currency_info = transaction.get("operationAmount", {}).get("currency", {})
-        if (
-                currency_info.get("name") == currency
-                and currency_info.get("code") == currency
-        ):
+        if currency_info.get("name") == currency and currency_info.get("code") == currency:
             yield transaction
 
 
