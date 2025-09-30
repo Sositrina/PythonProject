@@ -1,27 +1,31 @@
-def log(filename="mylog.txt"):
+def log(filename=None):
     """
     Декоратор логирования
-    Логи всегда пишутся в в файл mylog.txt
+    Если filename указан, то логи пишутся в файл
+    Если не указан, то логи выводятся в консоль
     """
 
     def decorator(func):
         """Принимает исходную функцию и возвращает функцию wrapper"""
-
         def wrapper(*args, **kwargs):
-            """ """
+            """Принимает аргументы исходной функции"""
+            def write_log(text):
+                """Проверяет,если файл указан, то записывает текст в файл
+                   Если не указан, то текст выводится в консоль"""
+                if filename:
+                    with open(filename, "a", encoding="utf-8") as file:
+                        file.write(text)
+                else:
+                    print(text, end="")
             try:
-                with open(filename, "a", encoding="utf-8") as file:
-                    file.write("Начало работы функции\n")
+                write_log("Начало работы функции\n")
                 result = func(*args, **kwargs)
-                with open(filename, "a", encoding="utf-8") as file:
-                    file.write(f"{func.__name__} ok\n")
+                write_log(f"{func.__name__} ok\n")
                 return result
             except Exception as e:
-                with open(filename, "a", encoding="utf-8") as file:
-                    file.write(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n")
+                    write_log(f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n")
             finally:
-                with open(filename, "a", encoding="utf-8") as file:
-                    file.write("Функция завершила работу\n")
+                    write_log("Функция завершила работу\n")
 
         return wrapper
 
