@@ -1,5 +1,12 @@
 import json
-def accepts_reads_file(path):
+
+
+def accepts_reads_file(path: str) -> list[dict]:
+    """
+    Читает файл.
+    Если файла нет,либо он пустой,либо не список- возвращает пустой список
+    При успешном чтении возвращает список словарей
+    """
     try:
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
@@ -9,7 +16,6 @@ def accepts_reads_file(path):
         return []
     else:
         return data
-
 
 
 if __name__ == "__main__":
