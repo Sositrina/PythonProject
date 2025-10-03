@@ -9,8 +9,13 @@ def accepts_reads_file(path: str) -> list[dict]:
     """
     try:
         with open(path, encoding="utf-8") as f:
-            data = json.load(f)
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError as e:
+                print("Ошибка декодирования JSON:", e)
+                return []
     except FileNotFoundError:
+        print("Файл не найден")
         return []
     if not isinstance(data, list) or not data:
         return []
