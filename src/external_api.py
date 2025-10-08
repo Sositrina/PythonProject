@@ -1,7 +1,15 @@
 import requests
 
+import os
 
-API_KEY = "SKGj2KhrRW9cjfXqZHX8zzZIW1Bpboy5"
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+
+API_KEY = os.getenv("API_KEY")
+
 
 def get_transaction_amount_in_rub(transaction: dict) -> float:
     """

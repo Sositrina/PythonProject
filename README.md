@@ -88,15 +88,22 @@ print(next(cards))
 print(next(cards))  
 print(next(cards))
 ```
+В модуле external_api:
+- `get_transaction_amount_in_rub` - Возвращает сумму в рублях
+- Пример вывода:
+- `100 USD → 9800.0 RUB,
+50 EUR → 5200.0 RUB,
+1000 RUB → 1000.0 RUB`
 
 
 ## Тесты
 
-- Тесты модуля `masks.py` пройдены на 100%
-- Тесты модуля `widget.py` пройдены на 100%
-- Тесты модуля `processing.py` пройдены на 100%
+- Тесты модуля `masks.py` пройдены
+- Тесты модуля `widget.py` пройдены
+- Тесты модуля `processing.py` пройдены
 - Тесты модуля `generators.py` пройдены
 - Тесты модуля `decorators.py` пройдены
+- Тесты модуля `external_api.py` пройдены
 Самостоятельная проверка тестов:
 
 1. Установите pytest: `poetry add --group dev pytest`

@@ -1,4 +1,5 @@
 from unittest.mock import patch
+
 from src.external_api import get_transaction_amount_in_rub
 
 # Тест USD → RUB
