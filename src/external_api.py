@@ -1,11 +1,9 @@
-import requests
-
 import os
 
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
-
 
 
 API_KEY = os.getenv("API_KEY")
@@ -19,11 +17,16 @@ def get_transaction_amount_in_rub(transaction: dict) -> float:
     if not isinstance(transaction, dict):
         raise TypeError("transaction должен быть словарём")
 
-    if "amount" not in transaction or "currency" not in transaction:
-        raise ValueError("Транзакция должна содержать ключи 'amount' и 'currency'")
+    if (
+        "operationAmount" not in transaction
+        or "amount" not in transaction["operationAmount"]
+        or "currency" not in transaction["operationAmount"]
+        or "code" not in transaction["operationAmount"]["currency"]
+    ):
+        raise ValueError("Некорректная структура транзакции")
 
-    amount = float(transaction["amount"])
-    currency = str(transaction["currency"]).upper()
+    amount = float(transaction["operationAmount"]["amount"])
+    currency = str(transaction["operationAmount"]["currency"]["code"]).upper()
 
     if currency == "RUB":
         return amount
@@ -43,3 +46,17 @@ def get_transaction_amount_in_rub(transaction: dict) -> float:
 
     amount_rub = amount * float(rate)
     return round(amount_rub, 2)
+
+
+if __name__ == "__main__":
+    transaction_usd = {
+        "id": 441945886,
+        "state": "EXECUTED",
+        "date": "2019-08-26T10:50:58.294041",
+        "operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "RUB"}},
+        "description": "Перевод организации",
+        "from": "Maestro 1596837868705199",
+        "to": "Счет 64686473678894779589",
+    }
+
+    print(get_transaction_amount_in_rub(transaction_usd))
