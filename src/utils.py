@@ -3,7 +3,7 @@ import logging
 
 # Настройка логирования
 logger = logging.getLogger(__name__)  # логер с именем модуля
-file_handler = logging.FileHandler("../logs/utils_logs.log", mode="w", encoding="utf-8")
+file_handler = logging.FileHandler("logs/utils_logs.log", mode="w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")  # формат записи логов
 file_handler.setFormatter(file_formatter)  # установка формата для хендлера
 logger.addHandler(file_handler)  # добавляет хендлер к логам

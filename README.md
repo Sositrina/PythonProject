@@ -95,6 +95,22 @@ print(next(cards))
 50 EUR → 5200.0 RUB,
 1000 RUB → 1000.0 RUB`
 
+В модуле financial_transactions:
+- `read_financial_transactions_csv` - Читает CSV и возвращает список слоарей
+- `read_financial_transactions_xl` - Читает XLSX и возвращает список словарей
+- Пример вывода:
+- `{
+        "id": 4699552.0,
+        "state": "EXECUTED",
+        "date": "2022-03-23T08:29:37Z",
+        "amount": 23423.0,
+        "currency_name": "Peso",
+        "currency_code": "PHP",
+        "from": "Discover 7269000803370165",
+        "to": "American Express 1963030970727681",
+        "description": "Перевод с карты на карту"
+    }`
+
 
 ## Тесты
 
@@ -104,6 +120,7 @@ print(next(cards))
 - Тесты модуля `generators.py` пройдены
 - Тесты модуля `decorators.py` пройдены
 - Тесты модуля `external_api.py` пройдены
+- Тесты модуля `[financial_transactions.py](src/financial_transactions.py)` пройдены
 Самостоятельная проверка тестов:
 
 1. Установите pytest: `poetry add --group dev pytest`

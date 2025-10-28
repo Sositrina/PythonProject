@@ -34,7 +34,7 @@ def test_mask_card_wrong_number(element: int) -> None:
     Тестирует на неверных значениях.
     Проверяет, что функция возвращает строку: 'Номер карты неверный'
     """
-    expected = "Номер карты неверный"
+    expected = "Ошибка: Номер карты неверный"
     assert get_mask_card_number(element) == expected
 
 
@@ -57,5 +57,5 @@ def test_mask_account_wrong(element: int) -> None:
     """Тестирует на неверных значениях.
     Проверяет, что функция возвращает строку: 'Номер счета неверный'
     """
-    expected = "Номер счета неверный"
+    expected = "Ошибка: Номер счета неверный"
     assert get_mask_account(element) == expected
