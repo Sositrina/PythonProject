@@ -110,6 +110,13 @@ print(next(cards))
         "to": "American Express 1963030970727681",
         "description": "Перевод с карты на карту"
     }`
+В модуле transaction_filter:
+- `file_selection` - запрашивает у пользователя один из трех файлов на выбор
+- `ransaction_status` - запрашивает у пользователя транзакции по статусу
+В модуле transaction_sorting:
+- `process_transactions` - сортируует транзакции
+В модуле reading_files открывает файлы и обрабатывает их
+- В модуле main связывает функционал модулей
 
 
 ## Тесты

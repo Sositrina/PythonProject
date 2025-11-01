@@ -42,7 +42,10 @@ def main() -> None:
             break
         print(f'Статус операции "{user_status}" недоступен.\n')
 
-    filtered: List[Dict] = [t for t in transactions if t.get("state", "").strip().upper() == user_status]
+    filtered: List[Dict] = [
+        t for t in transactions
+        if t.get("state", "").strip().upper() == user_status
+    ]
     print(f'Операции отфильтрованы по статусу "{user_status}"')
 
     process_transactions(filtered)
