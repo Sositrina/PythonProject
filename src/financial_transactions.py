@@ -1,5 +1,4 @@
 import csv
-import json
 from typing import Any, Dict, Hashable, List
 
 import pandas as pd
@@ -13,7 +12,7 @@ def read_financial_transactions_csv(transaction_csv: str) -> List[Dict[Hashable,
             reader_file_csv = csv.DictReader(file, delimiter=";")
             for row in reader_file_csv:
                 list_transactions.append(row)
-                print(json.dumps(list_transactions, indent=4, ensure_ascii=False))
+                # print(json.dumps(list_transactions, indent=4, ensure_ascii=False))
             return list_transactions
     except FileNotFoundError:
         print("Файл не найден")
@@ -35,9 +34,9 @@ if __name__ == "__main__":
     transaction_csv = read_financial_transactions_csv(
         r"C:\Users\parov\PycharmProjects\PythonProject\transactions\transactions.csv"
     )
-    print(json.dumps(transaction_csv, indent=4, ensure_ascii=False))
+    # print(json.dumps(transaction_csv, indent=4, ensure_ascii=False))
 
     transaction_xl = read_financial_transactions_xl(
         r"C:\Users\parov\PycharmProjects\PythonProject\transactions\transactions_excel.xlsx"
     )
-    print(json.dumps(transaction_xl, indent=4, ensure_ascii=False))
+    # print(json.dumps(transaction_xl, indent=4, ensure_ascii=False))
