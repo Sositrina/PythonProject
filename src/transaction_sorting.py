@@ -9,7 +9,6 @@ def process_transactions(transactions: List[Dict[str, Any]]) -> None:
         print("Программа: Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
         return
 
-    # ===== СОРТИРОВКА =====
     sort_date = input("Программа: Отсортировать операции по дате? Да/Нет\nПользователь: ").strip().lower()
     if sort_date == "да":
         order = input("Программа: Отсортировать по возрастанию или по убыванию?\nПользователь: ").strip().lower()
@@ -57,6 +56,3 @@ def process_transactions(transactions: List[Dict[str, Any]]) -> None:
         if accounts_info:
             print(accounts_info)
         print(f"Сумма: {amount} {currency}\n")
-
-
-

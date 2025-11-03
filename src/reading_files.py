@@ -12,7 +12,7 @@ TRANSACTIONS_DIR = os.path.join(os.path.dirname(BASE_DIR), "transactions")
 
 def read_json_file(file_name: str) -> List[Dict[str, Any]]:
     file_path = os.path.join(DATA_DIR, file_name)
-    print(f"Ищу JSON файл: {file_path}")
+
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Файл {file_path} не найден")
 
@@ -25,7 +25,7 @@ def read_json_file(file_name: str) -> List[Dict[str, Any]]:
 
 def read_csv_file(file_name: str) -> List[Dict[str, Any]]:
     file_path = os.path.join(TRANSACTIONS_DIR, file_name)
-    print(f"Ищу CSV файл: {file_path}")
+
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Файл {file_path} не найден")
 
@@ -49,7 +49,7 @@ def read_csv_file(file_name: str) -> List[Dict[str, Any]]:
 
 def read_xlsx_file(file_name: str) -> List[Dict[str, Any]]:
     file_path = os.path.join(TRANSACTIONS_DIR, file_name)
-    print(f"Ищу XLSX файл: {file_path}")
+
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Файл {file_path} не найден")
     wb = openpyxl.load_workbook(file_path)
