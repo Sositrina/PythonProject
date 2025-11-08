@@ -1,0 +1,3 @@
+Начало работы функции
+my_function error: TypeError. Inputs: ('a', 2), {}
+Функция завершила работу
