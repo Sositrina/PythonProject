@@ -1,13 +1,17 @@
+import os
 import json
 import logging
 
-# Настройка логирования
-logger = logging.getLogger(__name__)  # логер с именем модуля
-file_handler = logging.FileHandler("logs/utils_logs.log", mode="w", encoding="utf-8")
-file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")  # формат записи логов
-file_handler.setFormatter(file_formatter)  # установка формата для хендлера
-logger.addHandler(file_handler)  # добавляет хендлер к логам
-logger.setLevel(logging.DEBUG)  # уровень логирования
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # путь к src
+LOG_DIR = os.path.join(BASE_DIR, "..", "logs")         # путь к папке logs
+os.makedirs(LOG_DIR, exist_ok=True)                   # создаём папку, если нет
+
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler(os.path.join(LOG_DIR, "utils_logs.log"), mode="w", encoding="utf-8")
+file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
 
 
 def accepts_reads_file(path: str) -> list[dict]:

@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Dict, Any
-
+from src.widget import get_date, mask_account_card  # подключаем функции форматирования даты и маскировки
 
 def process_transactions(transactions: List[Dict[str, Any]]) -> None:
     """Обрабатывает список транзакций: сортировка, фильтры и вывод."""
@@ -38,12 +38,13 @@ def process_transactions(transactions: List[Dict[str, Any]]) -> None:
     print(f"Всего банковских операций в выборке: {len(transactions)}\n")
 
     for t in transactions:
-        date = t.get("date", "")[:10]
+        # Используем get_date для правильного формата ДД.ММ.ГГГГ
+        date = get_date(t.get("date", ""))
         description = t.get("description", "Нет описания")
 
-        from_acc = t.get("from", "")
-        to_acc = t.get("to", "")
-
+        # Маскировка карт и счетов
+        from_acc = mask_account_card(t.get("from", "")) if t.get("from") else ""
+        to_acc = mask_account_card(t.get("to", "")) if t.get("to") else ""
         if from_acc and to_acc:
             accounts_info = f"{from_acc} -> {to_acc}"
         else:
@@ -56,3 +57,4 @@ def process_transactions(transactions: List[Dict[str, Any]]) -> None:
         if accounts_info:
             print(accounts_info)
         print(f"Сумма: {amount} {currency}\n")
+

@@ -1,11 +1,16 @@
+import os
 import logging
 
-logger = logging.getLogger(__name__)  # логер с именем модуля
-file_handler = logging.FileHandler("logs/masks_logs.log", mode="w", encoding="utf-8")
-file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")  # формат записи логов
-file_handler.setFormatter(file_formatter)  # установка формата для хендлера
-logger.addHandler(file_handler)  # добавляет хендлер к логам
-logger.setLevel(logging.DEBUG)  # уровень логирования
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_DIR = os.path.join(BASE_DIR, "logs")
+
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler(os.path.join(LOG_DIR, "masks_logs.log"), mode="w", encoding="utf-8")
+file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
 
 
 def get_mask_card_number(card_number: int) -> str:
@@ -34,5 +39,5 @@ def get_mask_account(account_number: int) -> str:
 
 masked_card = get_mask_card_number(7000792289606361)
 masked_count = get_mask_account(73654108430135874305)
-print(masked_card)
-print(masked_count)
+#print(masked_card)
+#print(masked_count)
